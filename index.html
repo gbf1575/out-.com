@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hello</title>
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+    font-family: 'Inter', Arial, sans-serif;
+    text-align: center;
+    padding-top: 100px;
+  }
+  
+  .container {
+    max-width: 600px;
+    margin: 80px auto;
+    padding: 0 20px;
+  }
+  
+  h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .no{
+    background-color: red;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  #message{
+    margin-top: 20px;
+  }
+
+  #confetti-canvas{
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    z-index: -10;
+  }
+  
+  button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+
+  footer{
+    margin-top: 200px;
+  }
+  
+  @media (max-width: 768px) {
+    body {
+      padding-top: 50px;
+    }
+  
+    h1 {
+      font-size: 23px;
+      margin-bottom: 10px;
+    }
+  
+    button {
+      padding: 8px 16px;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+  }
+  
+    </style>
+ 
+</head>
+<body>
+   
+    <div class="container mx-auto">
+       
+        <h1 class="text-2xl" id="init">Hey Adella👋, Can I Ask You Something?</h1>
+        <button onclick="startQuestions()" id="que">Sure, Ask Away!</button>
+
+        <div id="questions" style="display: none;">
+            <h1 class="text-2xl mt-8">Question 1:</h1>
+            <p>Do you believe in love at first sight?</p>
+            <button onclick="answerYes()">Yes</button>
+            <button onclick="answerNo()" class="no">No</button>
+        </div>
+
+        <div id="message" style="display: none;">
+           
+            <p id="messageText"></p>
+        </div>
+    </div>
+
+    <canvas id="confetti-canvas">
+   </canvas>
+
+
+    <footer class="text-center mt-8">
+        Made with ❤️ by elias</a>
+    </footer>
+   
+    <script>
+        function startQuestions() {
+    document.getElementById("questions").style.display = "block";
+  }
+  
+  function answerYes() {
+    document.getElementById("questions").style.display = "none";
+      document.getElementById("que").style.display = "none";
+      document.getElementById("init").innerText = "YEY YEY 🎉🎉🎉";
+    document.getElementById("message").style.display = "block";
+    document.getElementById("messageText").innerText = "I believe in love at first sight too! How about we go on a date and see if it's true?";
+    showConfetti()
+}
+  
+  function answerNo() {
+    document.getElementById("questions").style.display = "none";
+    document.getElementById("que").style.display = "none";
+    document.getElementById("init").innerText = "YEY YEY 🎉🎉🎉";
+    document.getElementById("message").style.display = "block";
+    document.getElementById("messageText").innerText = "No worries, love takes time. But can we spend some time together and see if something beautiful blossoms?";
+    showConfetti()
+
+}
+  
+// Function to show confetti
+function showConfetti() {
+    const confettiSettings = {
+      target: 'confetti-canvas',
+      respawn: true,
+      colors: ['#ff0000', '#00ff00', '#0000ff'], 
+    };
+  
+    const confetti = new ConfettiGenerator(confettiSettings);
+    confetti.render();
+    setTimeout(() => {
+      confetti.clear();
+    }, 5000);
+  }
+  
+    </script>
+</body>
+</html>
